@@ -1,0 +1,19 @@
+# C++ compiled files - these are created by build.bat, so they are not needed in git
+library_server.exe
+*.obj
+*.o
+*.exe
+
+# Editor / system files
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+desktop.ini
+
+# A zipped copy of the project must never be committed, because it can hold
+# the compiled library_server.exe, and mail servers block that.
+*.zip
+
+# Leftover log files from tools
+grok_logs.csv

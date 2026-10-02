@@ -1,0 +1,8 @@
+# records.txt - RecordID | BookID | MemberID | IssueDate | IssueTime | ReturnDate | Status
+R001 | B001 | MOO1 | 02-10-2026 | - | 03-10-2026 | Returned
+R002 | K001 | KOO1 | 02-10-2026 | - | 03-10-2026 | Returned
+R003 | B004 | M001 | 02-10-2026 | - | 03-10-2026 | Returned
+R004 | B007 | M005 | 03-10-2026 | - | 02-10-2026 | Returned
+R005 | B007 | M006 | 04-10-2026 | - | 02-10-2026 | Returned
+R006 | B007 | M007 | 05-10-2026 | - | 02-10-2026 | Returned
+R007 | B007 | M001 | 03-10-2026 | 13:26 | - | Issued

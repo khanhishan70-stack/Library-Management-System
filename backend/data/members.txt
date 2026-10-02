@@ -1,0 +1,2 @@
+# members.txt - MemberID | MemberName | Course | PhoneNumber
+M001 | avinash | maths | 9876543210

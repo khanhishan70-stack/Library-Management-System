@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue Book &mdash; Library Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="issue">
+
+<div class="app">
+
+    <aside class="sidebar" id="sidebar">
+        <div class="brand">
+            <div class="brand-logo">LMS</div>
+            <div class="brand-text">
+                <h1>Library</h1>
+                <p>Management System</p>
+            </div>
+        </div>
+
+        <nav class="nav">
+            <a class="nav-link" data-page="dashboard" href="index.html">
+                <span class="nav-icon">▦</span> Dashboard
+            </a>
+            <a class="nav-link" data-page="books" href="books.html">
+                <span class="nav-icon">📖</span> Books
+            </a>
+            <a class="nav-link" data-page="members" href="members.html">
+                <span class="nav-icon">👥</span> Members
+            </a>
+            <a class="nav-link" data-page="issue" href="issue.html">
+                <span class="nav-icon">📤</span> Issue Book
+            </a>
+            <a class="nav-link" data-page="return" href="return.html">
+                <span class="nav-icon">📥</span> Return Book
+            </a>
+            <a class="nav-link" data-page="records" href="records.html">
+                <span class="nav-icon">📋</span> Records
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <p class="backend-tag"><span class="dot"></span> C++ Backend Connected</p>
+            <p class="version">v1.0 &mdash; File Storage Project</p>
+        </div>
+    </aside>
+
+    <main class="main">
+
+        <header class="topbar">
+            <button class="menu-btn" id="menuBtn" title="Open / close the menu">☰</button>
+            <div>
+                <h2 id="pageTitle">Issue Book</h2>
+                <p class="page-subtitle" id="pageSubtitle">Give a book to a member</p>
+            </div>
+            <div class="topbar-right">
+                <span class="clock" id="clock"></span>
+                <button class="theme-btn" id="themeBtn" title="Change dark / light">🌙</button>
+            </div>
+        </header>
+
+        <div class="card narrow">
+            <h3 class="card-title">📤 Issue Book to a Member</h3>
+            <p class="card-note">
+                Enter the Book ID and the Member ID. The backend checks that the book
+                exists, the member exists and that a copy is still on the shelf.
+            </p>
+
+            <form id="issueForm" class="form-grid single" novalidate>
+                <div class="field">
+                    <label for="issueBookId">Book <span class="star">*</span></label>
+                    <div class="search-wrap">
+                        <div class="search-box">
+                            <input type="text" id="issueBookId"
+                                   placeholder="Click to see available books..." autocomplete="off">
+                            <button type="button" class="btn btn-ghost" id="issueBookToggle">List</button>
+                        </div>
+                        <div class="book-panel" id="issueBookPanel">
+                            <div class="book-panel-head">
+                                <span>Available Books</span>
+                                <input type="text" id="issueBookPanelSearch"
+                                       placeholder="Type to filter the list...">
+                            </div>
+                            <ul class="book-panel-list" id="issueBookPanelList"></ul>
+                        </div>
+                    </div>
+                    <small class="hint">Only Available books are listed.</small>
+                    <small class="error" id="errorIssueBookId"></small>
+                </div>
+
+                <div class="field">
+                    <label for="issueMemberId">Member ID <span class="star">*</span></label>
+                    <input type="text" id="issueMemberId" placeholder="Example: M001"
+                           list="memberIdList" autocomplete="off">
+                    <datalist id="memberIdList"></datalist>
+                    <small class="error" id="errorIssueMemberId"></small>
+                </div>
+
+                <div class="field">
+                    <label for="issueDate">Issue Date <span class="star">*</span></label>
+                    <input type="date" id="issueDate">
+                    <small class="error" id="errorIssueDate"></small>
+                </div>
+
+                <div class="field">
+                    <label for="issueTime">Issue Time</label>
+                    <input type="time" id="issueTime">
+                    <small class="hint">Already filled with the current time.</small>
+                    <small class="error" id="errorIssueTime"></small>
+                </div>
+
+                <div class="field form-buttons">
+                    <button type="submit" class="btn btn-primary" id="issueSubmit">Issue Book</button>
+                    <button type="reset" class="btn btn-ghost">Clear</button>
+                </div>
+            </form>
+        </div>
+
+    </main>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="js/common.js"></script>
+<script src="js/issue.js"></script>
+</body>
+</html>
