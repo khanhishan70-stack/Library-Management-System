@@ -21,6 +21,7 @@ std::string urlDecode(const std::string& text);
 std::string getQueryPart(const std::string& path);
 std::string getQueryValue(const std::string& query, const std::string& name);
 std::string getCurrentFolder();
+void openWebPage(const std::string& url);
 
 std::string buildHttpResponse(const std::string& statusText,
                               const std::string& contentType,

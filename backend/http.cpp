@@ -8,6 +8,7 @@
 #include <sstream>
 #include <cctype>
 #include <cstdlib>
+#include <iostream>
 
 #ifdef _WIN32
     #include <windows.h>       // for GetCurrentDirectoryA
@@ -92,6 +93,23 @@ std::string getCurrentFolder() {
         path = path.substr(0, lastSlash);
     }
     return path;
+}
+
+// Opens the given address in the normal web browser. This is called only after
+// the socket is bound and listening, so the browser can never arrive before the
+// server is ready to answer. On a headless machine (a Codespace, for example)
+// there is no browser to open, so nothing is done there.
+void openWebPage(const std::string& url) {
+#ifdef _WIN32
+    // "start" is a command built into cmd.exe, which std::system() uses.
+    // The empty "" is the window title that start would otherwise read as the
+    // address. The url is built by us out of a port number, never typed in.
+    std::string command = "start \"\" \"" + url + "\"";
+    std::system(command.c_str());
+#else
+    (void)url;
+    std::cout << "No browser on this machine. Open the address above by hand.\n";
+#endif
 }
 
 // status line + headers + body

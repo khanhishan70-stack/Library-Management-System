@@ -1,6 +1,7 @@
 @echo off
 REM ==========================================================================
-REM  run.bat  -  Starts the C++ backend and opens the project in the browser
+REM  run.bat  -  Starts the C++ backend. The browser is opened by the program
+REM              itself, only after the server is really listening.
 REM
 REM  HOW TO USE :  double click this file
 REM
@@ -18,21 +19,24 @@ echo.
 
 cd /d "%~dp0"
 
-REM ---- If the program was not compiled yet, tell the student ----
+set "NOPAUSE="
+if /i "%~1"=="/nopause" set "NOPAUSE=1"
+
+REM ---- If the program was not compiled yet, say so instead of failing silently ----
 if not exist "library_server.exe" (
     echo library_server.exe was not found.
-    echo Please double click build.bat first to compile the C++ code.
+    echo Double click build.bat first, or start.bat in the project folder
+    echo which does the build and the start in one go.
     echo.
-    pause
+    if not defined NOPAUSE pause
     exit /b 1
 )
 
-REM ---- Open the browser after 2 seconds, then start the server ----
-start "" /min cmd /c "timeout /t 2 >nul & start http://localhost:8080"
-
 REM ---- Start the C++ web server (port 8080) ----
+REM The program prints "Server started successfully" and then opens the
+REM browser by itself, so the page can never load before the server answers.
 library_server.exe ".." 8080
 
 echo.
 echo The server has stopped.
-pause
+if not defined NOPAUSE pause

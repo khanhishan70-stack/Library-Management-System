@@ -111,6 +111,20 @@ int main(int argc, char* argv[]) {
     std::cout << "\nPress Ctrl + C in this black window to stop the server.\n";
     std::cout << "-----------------------------------------------\n";
 
+    // The socket is bound and listening by now, so it is safe to send the
+    // browser over. This is why the website never opens on a server that is
+    // still starting up. Passing "no-browser" as the third argument keeps the
+    // browser shut, which is what a headless Codespace needs.
+    bool openBrowser = true;
+    if (argc >= 4 && std::string(argv[3]) == "no-browser") {
+        openBrowser = false;
+    }
+
+    if (openBrowser) {
+        std::cout << "Opening the browser now...\n";
+        openWebPage("http://localhost:" + std::to_string(port));
+    }
+
     while (true) {
         std::cout << "Waiting for a request..." << std::endl;
 

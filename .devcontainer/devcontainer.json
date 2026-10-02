@@ -1,0 +1,19 @@
+{
+    "name": "Library Management System",
+
+    "image": "mcr.microsoft.com/devcontainers/cpp:1-ubuntu-24.04",
+
+    "postCreateCommand": "bash build.sh",
+
+    "postStartCommand": "nohup bash start.sh > /tmp/library-server.log 2>&1 &",
+
+    "forwardPorts": [8080],
+
+    "portsAttributes": {
+        "8080": {
+            "label": "Library Management System",
+            "onAutoForward": "notify",
+            "visibility": "public"
+        }
+    }
+}

@@ -1,0 +1,9 @@
+# Windows batch files need Windows line endings (CRLF).
+*.bat text eol=crlf
+
+# Linux shell scripts break if they get Windows line endings (CRLF), because
+# bash then reads the "#!" line as part of the command.
+*.sh text eol=lf
+
+# Keep everything else as text and let git handle the line endings.
+* text=auto
